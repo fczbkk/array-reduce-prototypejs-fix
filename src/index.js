@@ -8,6 +8,9 @@ import polyfill from './array-reduce-polyfill';
  * @ignore
  */
 function isOldPrototype () {
+  // do not even try outside browser
+  if (!window) {return false;}
+
   const prototype_version = getNestedProperty(window, 'Prototype.Version');
 
   if (typeof prototype_version === 'string') {
