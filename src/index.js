@@ -9,7 +9,9 @@ import polyfill from './array-reduce-polyfill';
  */
 function isOldPrototype () {
   // do not even try outside browser
-  if (!window) {return false;}
+  if (typeof window === 'undefined') {
+    return false;
+  }
 
   const prototype_version = getNestedProperty(window, 'Prototype.Version');
 
