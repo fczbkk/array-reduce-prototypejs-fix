@@ -1,6 +1,6 @@
 {
   "name": "array-reduce-prototypejs-fix",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Safe `Array.reduce()` when using PrototypeJS v1.6 and lower.",
   "repository": {
     "type": "git",
