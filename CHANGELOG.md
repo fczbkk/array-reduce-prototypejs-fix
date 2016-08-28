@@ -1,3 +1,13 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/fczbkk/array-reduce-prototypejs-fix/compare/v1.0.4...v1.1.0) (2016-08-28)
+
+
+### Features
+
+* split library and module ([f09bb5a](https://github.com/fczbkk/array-reduce-prototypejs-fix/commit/f09bb5a))
+
+
+
 <a name="1.0.4"></a>
 ## [1.0.4](https://github.com/fczbkk/array-reduce-prototypejs-fix/compare/v1.0.3...v1.0.4) (2016-05-26)
 

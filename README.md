@@ -10,14 +10,14 @@ Just remember that this should be a temporary fix. Real fix would be to get rid 
 
 ## Documentation
 
-### arrayReduce
+### index
 
 Does exactly the same as native `Array.reduce()`, but is safe to use when PrototypeJS v1.6 or lower is present.
 
 **Parameters**
 
--   `array` **[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)** Array object upon which you would call the native `reduce()` method.
--   `params`  Rest of parameters which you would provide to native `reduce()` method.
+-   `array` **\[[Array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)](default \[])** Array object upon which you would call the native `reduce()` method.
+-   `params` **...Any** Rest of parameters which you would provide to native `reduce()` method.
 
 Returns **Any** 
 
