@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/fczbkk/array-reduce-prototypejs-fix/compare/v1.1.0...v1.1.1) (2016-08-29)
+
+
+### Bug Fixes
+
+* fix publish workflow ([0eca1ca](https://github.com/fczbkk/array-reduce-prototypejs-fix/commit/0eca1ca))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/fczbkk/array-reduce-prototypejs-fix/compare/v1.0.4...v1.1.0) (2016-08-28)
 
