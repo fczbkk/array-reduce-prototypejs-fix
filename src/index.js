@@ -1,31 +1,35 @@
-import getNestedProperty from 'get-nested-property';
 import polyfill from './array-reduce-polyfill';
+import deepEqual from 'deep-equal';
 
 
-/**
- * Checks whether PrototypeJS v1.6 or lower is present.
- * @returns {boolean}
- * @ignore
- */
-function isOldPrototype () {
-  // do not even try outside browser
-  if (typeof window === 'undefined') {
-    return false;
+function testCurrentImplementation () {
+  let result = false;
+
+  const data = [2, 4, 6];
+  const init_value = 10;
+  const iterations = [];
+  const iterator = function (accumulator, current_value, current_index, array) {
+    iterations.push([accumulator, current_value, current_index, array]);
+    return accumulator + current_value;
+  };
+
+  const expectation = [
+    [10, 2, 0, data],
+    [12, 4, 1, data],
+    [16, 6, 2, data]
+  ];
+
+  try {
+    const output = Array.prototype.reduce.call(data, iterator, init_value);
+    result = (
+      output === 22
+      && deepEqual(iterations, expectation, {strict: true})
+    );
+  } catch (error) {
+    // continue
   }
 
-  const prototype_version = getNestedProperty(window, 'Prototype.Version');
-
-  if (typeof prototype_version === 'string') {
-    const parts = prototype_version
-      .split('.')
-      .map((item) => parseInt(item, 10));
-
-    if (parts[0] < 1 || (parts[0] === 1 && parts[1] < 7)) {
-      return true;
-    }
-  }
-
-  return false;
+  return result;
 }
 
 
@@ -36,6 +40,6 @@ function isOldPrototype () {
  * @returns {*}
  */
 export default function arrayReduce (array = [], ...params) {
-  const arrayReduce = isOldPrototype() ? polyfill : Array.prototype.reduce;
+  const arrayReduce = testCurrentImplementation() ? Array.prototype.reduce : polyfill;
   return arrayReduce.apply(array, params);
 }

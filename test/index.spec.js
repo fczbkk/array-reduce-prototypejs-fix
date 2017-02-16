@@ -1,26 +1,44 @@
 import arrayReduce from './../src/';
+import polyfill from './../src/array-reduce-polyfill';
 
 
 describe('safe Array.reduce with PrototypeJS', function () {
 
-  let array = [];
-  let fn = function () {};
-  let init_value = 'aaa';
+  const original = Array.prototype.reduce;
 
-  it('no PrototypeJS: use native implementation', function () {
-    spyOn(Array.prototype, 'reduce');
-    arrayReduce(array, fn, init_value);
-    expect(Array.prototype.reduce).toHaveBeenCalledWith(fn, init_value);
+  afterEach(function () {
+    Array.prototype.reduce = original;
   });
 
-  it('with PrototypeJS: use polyfill', function () {
-    window.Prototype = {Version: '1.6.0'};
+  it('should return valid result on native implementation', function () {
+    const result = arrayReduce([1, 2, 3], function (prev, next) {
+      return prev + next;
+    });
+    expect(result).toEqual(6);
+  });
 
-    spyOn(Array.prototype, 'reduce');
-    arrayReduce(array, fn, init_value);
-    expect(Array.prototype.reduce).not.toHaveBeenCalled();
+  it('should return valid result on valid implementation', function () {
+    Array.prototype.reduce = polyfill;
+    const result = arrayReduce([1, 2, 3], function (prev, next) {
+      return prev + next;
+    });
+    expect(result).toEqual(6);
+  });
 
-    delete window.Prototype;
+  it('should return valid result on invalid implementation', function () {
+    Array.prototype.reduce = function () {return 'xxx';};
+    const result = arrayReduce([1, 2, 3], function (prev, next) {
+      return prev + next;
+    });
+    expect(result).toEqual(6);
+  });
+
+  it('should return valid result on non-function replacement', function () {
+    Array.prototype.reduce = 'xxx';
+    const result = arrayReduce([1, 2, 3], function (prev, next) {
+      return prev + next;
+    });
+    expect(result).toEqual(6);
   });
 
 });
