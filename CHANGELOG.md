@@ -1,3 +1,13 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/fczbkk/array-reduce-prototypejs-fix/compare/v1.1.1...v1.2.0) (2017-02-16)
+
+
+### Features
+
+* rewrite so that it detects all mangled implementations ([3244537](https://github.com/fczbkk/array-reduce-prototypejs-fix/commit/3244537))
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/fczbkk/array-reduce-prototypejs-fix/compare/v1.1.0...v1.1.1) (2016-08-29)
 
